@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>makerhub.worldmap</title>
+
+            <!-- Stylesheets -->
+            <link rel="stylesheet" href="assets/css/reset.css" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Product+Sans:400,700&display=swap" />
+            <link rel="stylesheet" href="https://cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css" />
+            <link rel="stylesheet" href="assets/css/app.css" />
+
+            <!-- Meta Data -->
+            <link rel="icon" href="assets/img/favicon.png" />
+            <meta name="twitter:site" content="@makerhub_studio" />
+            <meta name="twitter:card" content="summary_large_image" />
+
+            <meta property="og:type" content="makerhub.studio" />
+            <meta property="og:site_name" content="makerhub.studio" />
+            <meta property="og:url" content="https://makerhub.studio" />
+            <meta property="og:title" content="makerhub.studio ~ Level Link Preview" />
+            <meta property="og:description" content="Share your Super Mario Maker 2 levels with our easy to use preview tool!" />
+            <meta property="og:image" content="https://makerhub.studio/assets/img/socialHeader.jpg" />
+        </head>
+        <body>
+            <aside>
+                <h1>Menu</h1>
+                <input type="number" class="debug_mapSizeX" value="3" style="width: 50px" /> x <input type="number" class="debug_mapSizeY" value="3" style="width: 50px" /><br /><br />
+                <textarea class="debug_mapData" style="width: 100%; height: 100px">[[1, 0, 0], [0, 1, 0], [0, 0, 1]]</textarea><br /><br />
+                <button onclick="UIDebugLoadMap()">Load Map Data</button>
+            </aside>
+
+            <main>
+                <canvas id="mainCanvas"></canvas>
+            </main>
+
+            <script src="assets/js/app.js"></script>
+            <script src="assets/js/ui.js"></script>
+        </body>
+    </html>
