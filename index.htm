@@ -24,16 +24,23 @@
         </head>
         <body>
             <aside>
-                <h1>Menu</h1>
-                <input type="number" class="debug_mapSizeX" value="3" style="width: 50px" /> x <input type="number" class="debug_mapSizeY" value="3" style="width: 50px" /><br /><br />
+                <input type="number" class="debug_mapSizeX" value="25" style="width: 50px" /> x <input type="number" class="debug_mapSizeY" value="25" style="width: 50px" /><br /><br />
+                <input type="range" min="0.1" max="3" step="0.1" value="1.0" class="debug_mapScale" oninput="UIResizeMap()" />
                 <textarea class="debug_mapData" style="width: 100%; height: 100px">[[1, 0, 0], [0, 1, 0], [0, 0, 1]]</textarea><br /><br />
-                <button onclick="UIDebugLoadMap()">Load Map Data</button>
+                <button onclick="UIDebugLoadMap()">Load Map Data</button><br />
+                <button onclick="UIDebugRandomMap()">Randomize Map</button><br />
+                <button onclick="UIDebugWaterMap()">Water Map</button><hr />
+                <b>Change Active Tile For Drawing</b><br />
+                <button onclick="UIDebugChangeTile(0)">Water</button>
+                <button onclick="UIDebugChangeTile(1)">Sand</button>
+                <button onclick="UIDebugChangeTile(2)">Grass</button>
             </aside>
 
             <main>
                 <canvas id="mainCanvas"></canvas>
             </main>
 
+            <script src="assets/js/simplex-noise.js"></script>
             <script src="assets/js/app.js"></script>
             <script src="assets/js/ui.js"></script>
         </body>
