@@ -17,14 +17,12 @@ function UIDebugLoadMap() {
     loadMap(UIDebugMapSizeX.value, UIDebugMapSizeY.value, JSON.parse(UIDebugMapData.value));
 }
 function UIDebugRandomMap() {
-    loadMap(UIDebugMapSizeX.value, UIDebugMapSizeY.value, []);
-    let newMap = generateMap( Date.now() );
+    let newMap = generateMap( UIDebugMapSizeX.value, UIDebugMapSizeY.value, null, 11 );
     loadMap(UIDebugMapSizeX.value, UIDebugMapSizeY.value, newMap);
     UIDebugMapData.value = JSON.stringify( newMap );
 }
 function UIDebugWaterMap() {
-    loadMap(UIDebugMapSizeX.value, UIDebugMapSizeY.value, []);
-    let newMap = generateMap("water");
+    let newMap = generateMap( UIDebugMapSizeX.value, UIDebugMapSizeY.value, "water", 11);
     loadMap(UIDebugMapSizeX.value, UIDebugMapSizeY.value, newMap);
     UIDebugMapData.value = JSON.stringify( newMap );
 }
@@ -45,7 +43,7 @@ function UIDebugChangeTile(tile) {
 canvas.addEventListener('mousedown', function(e) {
     if(e.which === 1) {
         UIDebugStateDraw = true;
-        document.body.style.cursor = "move";
+        document.body.style.cursor = "pointer";
     }
 
     if(e.which === 2) {
