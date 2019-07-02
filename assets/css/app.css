@@ -42,4 +42,7 @@ main {
   justify-content: center;
   align-items: center;
 }
+main canvas {
+  image-rendering: optimizeSpeed;
+}
 /*# sourceMappingURL=app.css.map */
