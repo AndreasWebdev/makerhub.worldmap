@@ -40,6 +40,17 @@
                 <canvas id="mainCanvas"></canvas>
             </main>
 
+            <script>
+                let canvas = document.querySelector("#mainCanvas");
+                let ctx = canvas.getContext("2d");
+                let map = [];
+
+                // Settings
+                let spriteSize = 32;
+                let canvasWidth = 25;
+                let canvasHeight = 25;
+                let debugActive = false;
+            </script>
             <script src="assets/js/simplex-noise.js"></script>
             <script src="assets/js/tiles.js"></script>
             <script src="assets/js/generation.js"></script>
