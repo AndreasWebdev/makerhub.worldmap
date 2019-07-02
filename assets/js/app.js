@@ -1,13 +1,3 @@
-// References
-let canvas = document.querySelector("#mainCanvas");
-let ctx = canvas.getContext("2d");
-let map = [];
-
-// Settings
-let spriteSize = 32;
-let canvasWidth = 25;
-let canvasHeight = 25;
-
 // Setup Canvas
 function init(){
     console.log("Init");
@@ -16,16 +6,21 @@ function init(){
     loadTileset(0);
 
     // Generate first World
-    map = generateMap();
+    if(debugActive) {
+        console.log("Debug Mode On!");
+        map = generateMap(canvasWidth, canvasHeight, "debug");
+    } else {
+        map = generateMap(canvasWidth, canvasHeight, "water");
+    }
 
     // Draw the map after the last tile loaded successfully
     tiles[tiles.length - 1].addEventListener('load', function() {
-        drawMap();
+        drawMap(debugActive);
     });
 }
 
 // Draw Map
-function drawMap() {
+function drawMap(debugMode = false) {
     console.log("Draw Map - Canvas Dimensions: " + canvasWidth + "x" + canvasHeight);
 
     // Setup Canvas
@@ -38,7 +33,14 @@ function drawMap() {
     // Draw Tiles
     map.forEach(function(yRow, y) {
         yRow.forEach(function(tile, x) {
-            drawTile(tile, x, y);
+            if(debugMode) {
+                ctx.beginPath();
+                ctx.rect(x * spriteSize, y * spriteSize, spriteSize, spriteSize);
+                ctx.fillStyle = 'rgb(' + tile * 255 + ',' + tile * 255 + ',' + tile * 255 + ')';
+                ctx.fill();
+            } else {
+                drawTile(tile, x, y);
+            }
         });
     });
 }
@@ -56,12 +58,12 @@ function loadMap(width, height, mapData) {
 
     // Redraw map with new data
     map = mapData;
-    drawMap();
+    drawMap(debugActive);
 }
 
 function drawOnMap(x, y, newTile) {
     map[x][y] = newTile;
-    drawMap();
+    drawMap(debugActive);
 }
 
 // Let's get this party started!

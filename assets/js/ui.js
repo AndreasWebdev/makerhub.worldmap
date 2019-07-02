@@ -17,12 +17,19 @@ function UIDebugLoadMap() {
     loadMap(UIDebugMapSizeX.value, UIDebugMapSizeY.value, JSON.parse(UIDebugMapData.value));
 }
 function UIDebugRandomMap() {
-    let newMap = generateMap( UIDebugMapSizeX.value, UIDebugMapSizeY.value, null, 11 );
+    let newMap;
+
+    if(debugActive) {
+        newMap = generateMap(UIDebugMapSizeX.value, UIDebugMapSizeY.value, "debug", noiseStrength);
+    } else {
+        newMap = generateMap( UIDebugMapSizeX.value, UIDebugMapSizeY.value, null, noiseStrength );
+    }
+
     loadMap(UIDebugMapSizeX.value, UIDebugMapSizeY.value, newMap);
     UIDebugMapData.value = JSON.stringify( newMap );
 }
 function UIDebugWaterMap() {
-    let newMap = generateMap( UIDebugMapSizeX.value, UIDebugMapSizeY.value, "water", 11);
+    let newMap = generateMap( UIDebugMapSizeX.value, UIDebugMapSizeY.value, "water", noiseStrength);
     loadMap(UIDebugMapSizeX.value, UIDebugMapSizeY.value, newMap);
     UIDebugMapData.value = JSON.stringify( newMap );
 }
